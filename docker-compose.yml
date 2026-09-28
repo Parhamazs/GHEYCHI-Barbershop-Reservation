@@ -1,0 +1,77 @@
+version: '3.8'
+
+services:
+  # 1. PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: gheychi-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: gheychi_user
+      POSTGRES_PASSWORD: gheychi_secret
+      POSTGRES_DB: gheychi_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./migrations/000001_init_schema.up.sql:/docker-entrypoint-initdb.d/01_init.sql
+      - ./migrations/seed.sql:/docker-entrypoint-initdb.d/02_seed.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gheychi_user -d gheychi_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 2. Redis Cache & 15-Minute Reservation Lock
+  redis:
+    image: redis:7-alpine
+    container_name: gheychi-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # 3. Golang Backend Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: gheychi-backend
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      PORT: 8080
+      DATABASE_URL: postgres://gheychi_user:gheychi_secret@postgres:5432/gheychi_db?sslmode=disable
+      REDIS_ADDR: redis:6379
+      JWT_SECRET: production-secret-gheychi-jwt-auth-key
+      JWT_REFRESH_SECRET: production-secret-gheychi-refresh-auth-key
+      JWT_EXPIRY_HOURS: 24
+    ports:
+      - "8080:8080"
+
+  # 4. React Frontend Web Application
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: gheychi-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  redis_data:

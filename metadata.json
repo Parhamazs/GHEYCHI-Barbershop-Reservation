@@ -1,0 +1,6 @@
+{
+  "name": "Gheychi (قیچی) - Barbershop Booking",
+  "description": "Production-grade barbershop appointment reservation platform with Redis locking, schedule templates, geolocation discovery, and dual Barber & Customer portals.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

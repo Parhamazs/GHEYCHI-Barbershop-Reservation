@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>کتابچه جامع معرفی سامانه رزرواسیون آنلاین قیچی (نسخه MVP) - آماده چاپ و ارائه به مشتری</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f8fafc;
+      color: #0f172a;
+      line-height: 1.7;
+    }
+    @media print {
+      @page { size: A4; margin: 15mm; }
+      body { background-color: #ffffff; color: #0f172a; font-size: 11pt; }
+      .no-print { display: none !important; }
+      .page-break { page-break-before: always; break-before: page; }
+    }
+  </style>
+</head>
+<body class="p-4 sm:p-10 max-w-5xl mx-auto bg-white">
+  <!-- Sticky Toolbar -->
+  <div class="no-print mb-8 p-4 bg-blue-50 border border-blue-200 rounded-2xl flex items-center justify-between">
+    <div>
+      <h3 class="font-bold text-blue-900 text-sm">سند رسمی معرفی و ارائه MVP قیچی</h3>
+      <p class="text-xs text-blue-700">آماده پرینت به عنوان فایل PDF یا ذخیره آفلاین</p>
+    </div>
+    <button onclick="window.print()" class="bg-blue-600 text-white font-bold px-4 py-2 rounded-xl text-xs shadow hover:bg-blue-700">
+      چاپ و دریافت فایل PDF (A4)
+    </button>
+  </div>
+
+  <!-- Cover Page -->
+  <div class="text-center py-12 border-b border-slate-200 space-y-6">
+    <div class="inline-block p-4 bg-blue-100 border-2 border-blue-600 rounded-3xl text-blue-600 text-3xl font-black">
+      ✂ قیچی
+    </div>
+    <div class="space-y-2">
+      <span class="inline-block bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">مستندات رسمی و ارائه تجاری</span>
+      <h1 class="text-3xl sm:text-4xl font-black text-slate-900">سند جامع معرفی سامانه رزرواسیون قیچی (نسخه MVP)</h1>
+      <p class="text-base text-slate-600 max-w-2xl mx-auto">
+        داستان شکل‌گیری محصول، تشریح کامل تک‌تک صفحات، مزایای اقتصادی و جزئیات فنی جهت ارائه به مشتریان و آرایشگاه‌ها
+      </p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto text-xs font-semibold">
+      <div class="p-3 bg-slate-50 border rounded-xl">نسخه: MVP 1.0 تجاری</div>
+      <div class="p-3 bg-slate-50 border rounded-xl">زبان بک‌اند: Golang</div>
+      <div class="p-3 bg-slate-50 border rounded-xl">پایگاه داده: PostgreSQL</div>
+      <div class="p-3 bg-slate-50 border rounded-xl">قفل همزمانی: Redis ۱۵ دقیقه</div>
+    </div>
+    <div class="text-xs text-slate-400">تاریخ تنظیم: مهر ۱۴۰۵ (سپتامبر ۲۰۲۶) · تهران، ایران</div>
+  </div>
+
+  <!-- Content Body -->
+  <div class="space-y-10 py-8 text-sm leading-relaxed text-slate-700">
+    <!-- Chapter 1 -->
+    <section class="space-y-4">
+      <h2 class="text-xl font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+        <span class="bg-blue-600 text-white rounded-lg px-2 py-0.5 text-xs">۱</span>
+        فصل اول: داستان پیدایش و فلسفه کسب‌وکار (Application Story)
+      </h2>
+      <p>
+        صنعت پیرایش مردانه در ایران همواره با روش‌های سنتی تلفنی، تقویم‌های کاغذی و پیام‌های متنی اداره شده است. این شیوه سنتی منجر به سه بحران اساسی در مدیریت سالن‌ها می‌شود:
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div class="p-3 bg-red-50 border border-red-200 rounded-xl">
+          <strong class="text-red-700 block mb-1">۱. بحران عدم حضور (No-Shows)</strong>
+          در رزروهای سنتیِ چند روز آینده، بیش از ۳۵٪ مشتریان بدون اطلاع قبلی در موعد نوبت حاضر نمی‌شوند.
+        </div>
+        <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+          <strong class="text-amber-700 block mb-1">۲. تداخل زمانی و معطلی</strong>
+          رزرو همزمان دو مشتری برای یک ساعت مشترک ناشی از خطای یادداشت‌برداری.
+        </div>
+        <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl">
+          <strong class="text-purple-700 block mb-1">۳. اتلاف تمرکز استادکار</strong>
+          پاسخگویی مداوم به تماس‌های تلفنی مشتریان حین کوتاهی مو و تمرکز روی سر مشتری.
+        </div>
+      </div>
+      <p>
+        <strong>راه‌حل اختصاصی قیچی:</strong> با تعریف «محدودیت رزرو فقط برای ۲ روز آینده» نرخ غیبت به کمتر از ۵٪ می‌رسد و با «قفل موقت ۱۵ دقیقه‌ای با Redis» جلوی هرگونه رزرو تکراری و تداخل گرفته می‌شود.
+      </p>
+    </section>
+
+    <!-- Chapter 2 -->
+    <section class="space-y-4 page-break">
+      <h2 class="text-xl font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+        <span class="bg-blue-600 text-white rounded-lg px-2 py-0.5 text-xs">۲</span>
+        فصل دوم: تشریح تک‌تک صفحات و مودهای سامانه (MVP Pages & Modes)
+      </h2>
+      <div class="space-y-4">
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۱: ورود به سامانه و انتخاب نقش (Login Page)</h3>
+          <p class="text-xs text-slate-600">
+            دارای دو دکمه اختصاصی بزرگ: «ورود آرایشگر» (جهت مدیریت سالن، نوبت‌ها و گالری) و «ورود مشتری» (جهت رزرو و پرداخت آنلاین)، همراه با امکان تست شماره تلفن همراه دلخواه ایران (۰۹۱۲...).
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۲: پورتال مشتریان و موتور کشف جغرافیایی (Customer Portal)</h3>
+          <p class="text-xs text-slate-600">
+            محاسبه زنده فاصله با الگوریتم کروی Haversine GPS، فیلتر شهرهای اصلی ایران (تهران جردن/نیاوران، اصفهان، شیراز، مشهد، تبریز)، نمایش ستاره‌های امتیاز و قیمت خدمات به تومان.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۳: پروفایل تفصیلی آرایشگر و مودال انتخاب نوبت</h3>
+          <p class="text-xs text-slate-600">
+            گالری ۴ عکس از محیط سالن، بیوگرافی استادکار، جدول نوبت‌های ۲ روز آینده (امروز و فردا) در بلوک‌های ۳۰ دقیقه‌ای و ثبت نظر مشتریان.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۴: کشوی پرداخت و مکانیزم قفل ۱۵ دقیقه‌ای ردیس</h3>
+          <p class="text-xs text-slate-600">
+            تایمر معکوس ۱۵:۰۰ ثانیه‌ای زنده؛ اگر مشتری ظرف ۱۵ دقیقه پرداخت را تایید کند نوبت به رنگ سبز درمی‌آید و اگر مهلت سپری شود اسلات بلافاصله به چرخه عمومی بازمی‌گردد.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۵: داشبورد آرایشگر و ماتریس گرافیکی روزانه</h3>
+          <p class="text-xs text-slate-600">
+            جدول بصری با کدهای رنگی (سبز = پرداخت‌شده، قرمز = رزرو تلفنی دستی، زرد = قفل ۱۵ دقیقه، خاکستری = آزاد). پشتیبانی از ثبت رزرو تلفنی دستی برای مراجعین سنتی سالن.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۶: سیستم الگوهای شیفت کاری (Shift Templates)</h3>
+          <p class="text-xs text-slate-600">
+            تعریف الگوهای شیفت صبح، عصر و تمام‌وقت، و دکمه اعمال دسته‌جمعی به روزهای آینده با یک کلیک.
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۷ و ۸: تنظیمات پروفایل سالن و گالری ۴ تصویر</h3>
+          <p class="text-xs text-slate-600">
+            ویرایش آنلاین نام سالن، آدرس، قیمت پایه، و گالری عکس با محدودیت قانون بیزینس (حداکثر ۴ عکس).
+          </p>
+        </div>
+
+        <div class="p-4 bg-slate-50 border rounded-2xl">
+          <h3 class="font-bold text-slate-900 text-base mb-1">صفحه ۹ و ۱۰: سیستم اعلان‌های توست و پوسته سفید با دکمه‌های آبی</h3>
+          <p class="text-xs text-slate-600">
+            اطلاع‌رسانی بلادرنگ تایید رزرو و انقضای ۱۵ دقیقه با نوتیفیکیشن‌های تعاملی، همراه با پوسته روشن سفید و دکمه‌های آبی سلطنتی (Blue Buttons).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chapter 3 -->
+    <section class="space-y-4 page-break">
+      <h2 class="text-xl font-bold text-slate-900 border-b pb-2 flex items-center gap-2">
+        <span class="bg-blue-600 text-white rounded-lg px-2 py-0.5 text-xs">۳</span>
+        فصل سوم: معماری فنی، امنیت و مقایسه ارزش
+      </h2>
+      <p>
+        بک‌اند سامانه با زبان قدرتمند Golang و فریم‌ورک Gin با مصرف رم ناچیز و پردازش موازی طراحی شده است. پایگاه داده رابطه ای PostgreSQL متضمن پایبندی به اصول ACID تراکنش‌های مالی است و Redis به عنوان قفل توزیع‌شده با کلیدهای انقضادار (TTL) مانع از هرگونه Double Booking می‌شود.
+      </p>
+
+      <div class="overflow-x-auto pt-2">
+        <table class="w-full text-xs text-start border-collapse border rounded-xl overflow-hidden">
+          <thead>
+            <tr class="bg-slate-100 font-bold">
+              <th class="p-3 border text-start">معیار مقایسه</th>
+              <th class="p-3 border text-start text-red-600">روش سنتی تلفنی</th>
+              <th class="p-3 border text-start text-blue-600">سامانه هوشمند قیچی</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border font-semibold">نرخ عدم حضور (No-Show)</td>
+              <td class="p-3 border text-red-600">۳۰٪ تا ۴۰٪ غیبت</td>
+              <td class="p-3 border text-emerald-600 font-bold">زیر ۵٪ با افق ۲ روزه</td>
+            </tr>
+            <tr>
+              <td class="p-3 border font-semibold">تداخل نوبت‌ها</td>
+              <td class="p-3 border">خطای مکرر انسانی</td>
+              <td class="p-3 border text-slate-800">صفر (قفل اتومیک ردیس)</td>
+            </tr>
+            <tr>
+              <td class="p-3 border font-semibold">آرامش در حین کار</td>
+              <td class="p-3 border">پاسخگویی مداوم به تلفن</td>
+              <td class="p-3 border text-slate-800">رزرو خودکار آنلاین ۲۴ ساعته</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer Seal -->
+  <div class="mt-12 pt-6 border-t border-slate-200 text-center text-xs text-slate-500">
+    سامانه رزرواسیون آنلاین قیچی (Gheychi Platform) · نسخه تجاری MVP · تمام حقوق محفوظ است
+  </div>
+</body>
+</html>

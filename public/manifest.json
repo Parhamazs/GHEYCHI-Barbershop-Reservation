@@ -1,0 +1,17 @@
+{
+  "short_name": "Gheychi",
+  "name": "Gheychi (قیچی) - Barbershop Booking & Real-Time Schedule Platform",
+  "description": "Production-grade barbershop appointment reservation platform with distributed Redis locking, reusable schedule templates, and geolocation discovery.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#0b0f17",
+  "theme_color": "#0b0f17",
+  "display": "standalone",
+  "orientation": "portrait"
+}
